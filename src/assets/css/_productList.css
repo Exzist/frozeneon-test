@@ -1,0 +1,38 @@
+.product-list {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.product-list__spacer {
+  width: 100%;
+}
+
+.product-list__wrapper {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.product-list__loader {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.smooth-fade-move,
+.smooth-fade-enter-active,
+.smooth-fade-leave-active {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.smooth-fade-enter-from,
+.smooth-fade-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}

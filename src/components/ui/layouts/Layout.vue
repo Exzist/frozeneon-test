@@ -1,4 +1,5 @@
 <template>
+  <!-- here can be sidebar or header -->
   <router-view />
 </template>
 
