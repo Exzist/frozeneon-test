@@ -1,2 +1,6 @@
 @import url("reset.css");
+@import url("_general.css");
 @import url("_products.css");
+@import url("_productCard.css");
+@import url("_productList.css");
+@import url("_customInput.css");
