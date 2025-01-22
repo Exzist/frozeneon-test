@@ -1,5 +1,3 @@
-import type { App } from "vue";
-
 /**
  * @description Service to call HTTP requests via Fetch API
  */
@@ -9,11 +7,11 @@ class ApiService {
    */
   private static baseURL: string;
 
+  // If I were using axios, I would be taking app instance here and init API. This part isn`t necessary without axios, but it`s still here for example
   /**
-   * @description Initialize API service with Vue app instance
-   * @param app Vue app instance
+   * @description Initialize API service
    */
-  public static init(app: App<Element>) {
+  public static init() {
     ApiService.baseURL = process.env.VUE_APP_API_URL || "";
   }
 

@@ -1,10 +1,25 @@
 <template>
-  <div class="product-list">
-    <div class="product-list__wrapper" v-if="data.length != 0">
-      <product-card v-for="product in data" :data="product" :key="product.id" />
-    </div>
-    <div class="product-list__loader" v-else>
-      <div class="product-list__spinner"></div>
+  <div class="product-list" ref="listContainer" @scroll="handleScroll">
+    <div
+      class="product-list__spacer"
+      :style="{ height: `${totalHeight}px` }"
+    ></div>
+    <transition-group
+      v-if="!isLoading"
+      name="smooth-fade"
+      tag="div"
+      class="product-list__wrapper"
+      :style="{ transform: `translateY(${startOffset}px)` }"
+      :css="false"
+    >
+      <product-card
+        v-for="product in visibleProducts"
+        :key="product.id"
+        :data="product"
+      />
+    </transition-group>
+    <div v-else class="product-list__loader">
+      <div class="product-list__spinner loader"></div>
     </div>
   </div>
 </template>
@@ -26,8 +41,8 @@ export default defineComponent({
       required: true,
     },
   },
-  setup() {
-    return ProductList();
+  setup(props) {
+    return ProductList(props);
   },
 });
 </script>

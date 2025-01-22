@@ -6,7 +6,7 @@ import ApiService from "@/core/services/ApiService";
 
 const app = createApp(App);
 
-ApiService.init(app);
+ApiService.init();
 
 app.use(store);
 app.use(router);
