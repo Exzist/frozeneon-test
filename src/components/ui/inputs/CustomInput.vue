@@ -14,6 +14,11 @@
 import { defineComponent } from "vue";
 import { CustomInput } from "@/components/logic/inputs/CustomInput";
 
+export type CustomInputEmit = (
+  event: "update:modelValue",
+  value: string
+) => void;
+
 export default defineComponent({
   name: "custom-input",
   props: {
@@ -26,7 +31,7 @@ export default defineComponent({
     },
   },
   setup(props, { emit }) {
-    return CustomInput(props, { emit });
+    return CustomInput(emit);
   },
 });
 </script>
