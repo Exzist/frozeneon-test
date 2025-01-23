@@ -10,7 +10,7 @@
       tag="div"
       class="product-list__wrapper"
       :style="{ transform: `translateY(${startOffset}px)` }"
-      :css="false"
+      :css="!!searchQuery && !isScrolling"
     >
       <product-card
         v-for="product in visibleProducts"
@@ -38,6 +38,10 @@ export default defineComponent({
   props: {
     data: {
       type: Array as PropType<Product[]>,
+      required: true,
+    },
+    searchQuery: {
+      type: String,
       required: true,
     },
   },

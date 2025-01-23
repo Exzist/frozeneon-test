@@ -7,7 +7,7 @@
             v-model="searchInput"
             placeholder="Enter value to search"
           />
-          <product-list :data="products" />
+          <product-list :data="products" :searchQuery="searchInput" />
         </div>
       </div>
     </section>

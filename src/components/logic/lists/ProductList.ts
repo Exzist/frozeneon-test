@@ -11,6 +11,7 @@ export function ProductList(props: { data: Product[] }) {
 
   const listContainer = ref<HTMLElement | null>(null);
   const startIndex = ref(0);
+  const isScrolling = ref(false);
   const totalHeight = computed(() => props.data.length * ITEM_HEIGHT);
 
   // Number of elements after visible elements
@@ -36,6 +37,7 @@ export function ProductList(props: { data: Product[] }) {
   const handleScroll = () => {
     if (!listContainer.value || ticking) return;
 
+    isScrolling.value = true;
     ticking = true;
     requestAnimationFrame(() => {
       const scrollTop = listContainer.value!.scrollTop;
@@ -51,6 +53,7 @@ export function ProductList(props: { data: Product[] }) {
         startIndex.value = newStartIndex;
       }
 
+      isScrolling.value = false;
       ticking = false;
     });
   };
@@ -62,5 +65,6 @@ export function ProductList(props: { data: Product[] }) {
     startOffset,
     handleScroll,
     isLoading,
+    isScrolling,
   };
 }
