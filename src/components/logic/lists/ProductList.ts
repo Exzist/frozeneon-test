@@ -32,10 +32,12 @@ export function ProductList(props: { data: Product[] }) {
 
   // Throttling mechanism to optimize scroll performance
   let ticking = false;
+  const isScrolling = ref(false);
   // Handles the scroll event to update the start index
   const handleScroll = () => {
     if (!listContainer.value || ticking) return;
 
+    isScrolling.value = true;
     ticking = true;
     requestAnimationFrame(() => {
       const scrollTop = listContainer.value!.scrollTop;
@@ -51,6 +53,7 @@ export function ProductList(props: { data: Product[] }) {
         startIndex.value = newStartIndex;
       }
 
+      isScrolling.value = false;
       ticking = false;
     });
   };
@@ -62,5 +65,6 @@ export function ProductList(props: { data: Product[] }) {
     startOffset,
     handleScroll,
     isLoading,
+    isScrolling,
   };
 }
