@@ -42,6 +42,7 @@ export default defineComponent({
     },
     searchQuery: {
       type: String,
+      required: true,
     },
   },
   setup(props) {

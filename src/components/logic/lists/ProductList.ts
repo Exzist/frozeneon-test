@@ -11,6 +11,7 @@ export function ProductList(props: { data: Product[] }) {
 
   const listContainer = ref<HTMLElement | null>(null);
   const startIndex = ref(0);
+  const isScrolling = ref(false);
   const totalHeight = computed(() => props.data.length * ITEM_HEIGHT);
 
   // Number of elements after visible elements
@@ -32,7 +33,6 @@ export function ProductList(props: { data: Product[] }) {
 
   // Throttling mechanism to optimize scroll performance
   let ticking = false;
-  const isScrolling = ref(false);
   // Handles the scroll event to update the start index
   const handleScroll = () => {
     if (!listContainer.value || ticking) return;
